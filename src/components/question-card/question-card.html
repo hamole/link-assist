@@ -1,0 +1,36 @@
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <img class="question-image" src="{{ imageSrc }}" height="200">
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col width-80 offset-10>
+      <button ion-button icon-left class="audio-button" (click)="playAudio()">
+        <ion-icon name="volume-up"></ion-icon>
+        {{ 'LISTENAUDIO' | translate }}
+      </button>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <p class="question-text">
+        {{ question | translate }}
+      </p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col width-50>
+      <button ion-button color="secondary" class="answer-button" icon-left (click)="choiceMade('yes')">
+        <ion-icon name="checkmark"></ion-icon>
+        {{ 'YES' | translate }}
+      </button>
+    </ion-col>
+    <ion-col width-50>
+      <button ion-button color="danger" class="answer-button" icon-left (click)="choiceMade('no')">
+        <ion-icon name="close"></ion-icon>
+        {{ 'NO' | translate }}
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

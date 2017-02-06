@@ -1,0 +1,28 @@
+question-card {
+  .button {
+    padding: 1em;
+  }
+  .question-image {
+    margin: 0 auto;
+    display: block;
+    width: auto;
+  }
+  .question-text {
+    text-align: center;
+    font-weight: bold;
+    font-size: 300%;
+  }
+  .audio-button {
+    font-size: 250%;
+    margin: 0 auto;
+    display: block;
+  }
+  .answer-button {
+    font-size: 250%;
+    margin: 0 auto;
+    display: block;
+    ion-icon {
+      font-weight: bolder;
+    }
+  }
+}
