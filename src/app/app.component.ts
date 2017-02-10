@@ -1,23 +1,28 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { HomePage } from '../pages/home/home';
 import { LangSelectPage } from "../pages/lang-select/lang-select";
 import { HearingPage } from "../pages/hearing/hearing"
+import { QuestionPage } from '../pages/question/question';
 import { TranslateService } from 'ng2-translate';
+import { Question } from '../models/question';
+import {QuestionService} from "../services/question.service";
 
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [QuestionService]
 })
-export class MyApp {
+export class MyApp implements OnInit{
   @ViewChild(Nav) nav: Nav;
 
   rootPage = LangSelectPage;
   pages: Array<{title: string, component: any}>;
+  questions: Question[];
 
-  constructor(platform: Platform, translate: TranslateService) {
+  constructor(platform: Platform, translate: TranslateService, public questionService: QuestionService) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -31,14 +36,23 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Language Selection', component: LangSelectPage },
-      { title: 'Do you need glasses?', component: HomePage },
-      { title: 'Do you need a hearing aid?', component: HearingPage },
     ];
-  }
 
+  }
+  ngOnInit(){
+    this.questions = this.questionService.getAllQuestions();
+    this.questionService.setCurrentQuestion(this.questions[0]);
+  }
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+  openQuestionPage(question: Question){
+    console.log(question);
+    this.questionService.setCurrentQuestion(question);
+    console.log(this.questionService.getCurrentQuestion());
+    this.nav.setRoot(QuestionPage);
+  }
+
 }

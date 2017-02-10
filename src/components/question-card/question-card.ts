@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { AudioService } from '../../services/audio.service';
+import {Question} from "../../models/question";
 
 /*
   Generated class for the QuestionCard component.
@@ -18,22 +19,20 @@ export class QuestionCardComponent implements OnInit {
   choice: EventEmitter<string> = new EventEmitter<string>();
 
   @Input()
-  question: string;
+  question: Question;
 
-  imageSrc: string;
 
   constructor(private audioService: AudioService) {
     console.log('Hello QuestionCard Component');
   }
 
   ngOnInit() {
-    this.imageSrc = `assets/images/${this.question}.jpg`;
   }
   choiceMade(option: string) {
     this.choice.emit(option);
   }
 
   playAudio(){
-    this.audioService.play(this.question);
+    this.audioService.play(this.question.key);
   }
 }

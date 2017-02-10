@@ -10,6 +10,9 @@
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
+      <button menuClose ion-item *ngFor="let q of questions" (click)="openQuestionPage(q)">
+        {{ q.englishName }}
+      </button>
     </ion-list>
   </ion-content>
 

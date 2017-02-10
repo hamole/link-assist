@@ -1,0 +1,26 @@
+<!--
+  Generated template for the Question page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ question.englishName }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col width-80 offset-10>
+        <question-card [question]="question" (choice)="logChoice($event)"></question-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,7 +1,7 @@
 <ion-grid>
   <ion-row>
     <ion-col>
-      <img class="question-image" src="{{ imageSrc }}" height="200">
+      <img class="question-image" src="{{ question.imageSrc }}" height="200">
     </ion-col>
   </ion-row>
   <ion-row>
@@ -15,21 +15,15 @@
   <ion-row>
     <ion-col>
       <p class="question-text">
-        {{ question | translate }}
+        {{ question.key | translate }}
       </p>
     </ion-col>
   </ion-row>
   <ion-row>
-    <ion-col width-50>
-      <button ion-button color="secondary" class="answer-button" icon-left (click)="choiceMade('yes')">
-        <ion-icon name="checkmark"></ion-icon>
-        {{ 'YES' | translate }}
-      </button>
-    </ion-col>
-    <ion-col width-50>
-      <button ion-button color="danger" class="answer-button" icon-left (click)="choiceMade('no')">
-        <ion-icon name="close"></ion-icon>
-        {{ 'NO' | translate }}
+    <ion-col width-50 *ngFor="let option of question.options">
+      <button ion-button color="{{ option.color }}" class="answer-button" icon-left (click)="choiceMade(option.transKey)">
+        <ion-icon name="{{ option.icon }}"></ion-icon>
+        {{ option.transKey | translate }}
       </button>
     </ion-col>
   </ion-row>

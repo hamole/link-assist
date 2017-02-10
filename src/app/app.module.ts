@@ -9,6 +9,7 @@ import {HttpModule, Http} from '@angular/http';
 import {TranslateModule, TranslateLoader, TranslateStaticLoader } from "ng2-translate";
 import {LangSelectPage} from "../pages/lang-select/lang-select";
 import {LangChoiceComponent} from "../components/lang-choice/lang-choice";
+import {QuestionPage} from "../pages/question/question";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, 'assets/i18n', '.json');
@@ -23,6 +24,7 @@ export function createTranslateLoader(http: Http) {
     LangSelectPage,
     QuestionCardComponent,
     LangChoiceComponent,
+    QuestionPage,
   ],
   imports: [
     HttpModule,
@@ -40,6 +42,7 @@ export function createTranslateLoader(http: Http) {
     HearingPage,
     PreviousVisitPage,
     LangSelectPage,
+    QuestionPage,
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
