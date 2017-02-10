@@ -1,10 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { QuestionCardComponent } from '../components/question-card/question-card'
-import { HearingPage } from "../pages/hearing/hearing";
-import { PreviousVisitPage } from "../pages/previous-visit/previous-visit";
 import {HttpModule, Http} from '@angular/http';
 import {TranslateModule, TranslateLoader, TranslateStaticLoader } from "ng2-translate";
 import {LangSelectPage} from "../pages/lang-select/lang-select";
@@ -18,9 +15,6 @@ export function createTranslateLoader(http: Http) {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    HearingPage,
-    PreviousVisitPage,
     LangSelectPage,
     QuestionCardComponent,
     LangChoiceComponent,
@@ -38,9 +32,6 @@ export function createTranslateLoader(http: Http) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    HearingPage,
-    PreviousVisitPage,
     LangSelectPage,
     QuestionPage,
   ],

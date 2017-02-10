@@ -1,10 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-
-import { HomePage } from '../pages/home/home';
 import { LangSelectPage } from "../pages/lang-select/lang-select";
-import { HearingPage } from "../pages/hearing/hearing"
 import { QuestionPage } from '../pages/question/question';
 import { TranslateService } from 'ng2-translate';
 import { Question } from '../models/question';
