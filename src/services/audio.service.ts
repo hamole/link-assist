@@ -13,6 +13,11 @@ export class AudioService {
     });
   };
 
+  playLanguageAudio(iso: string) {
+    let audio = new Audio(`assets/audio/languagechoices/${iso.toLowerCase()}.mp3`);
+    audio.play();
+  }
+
   play(key: string) {
     let audio = new Audio(`assets/audio/${this.currentLang}/${key.toLowerCase()}.mp3`);
     audio.play();

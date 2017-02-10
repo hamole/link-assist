@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import {LangOption} from "../../models/langoption";
+import {AudioService} from "../../services/audio.service";
 
 /*
   Generated class for the LangChoice component.
@@ -9,7 +10,8 @@ import {LangOption} from "../../models/langoption";
 */
 @Component({
   selector: 'lang-choice',
-  templateUrl: 'lang-choice.html'
+  templateUrl: 'lang-choice.html',
+  providers: [AudioService]
 })
 export class LangChoiceComponent {
 
@@ -19,10 +21,14 @@ export class LangChoiceComponent {
   @Output()
   clicked: EventEmitter<LangOption> = new EventEmitter<LangOption>();
 
-  constructor() {
+  constructor(private audioService: AudioService) {
     console.log('Hello LangChoice Component');
   }
   cardClicked(){
     this.clicked.emit(this.langOption);
+  }
+  playAudio(event){
+    this.audioService.playLanguageAudio(this.langOption.iso);
+    event.stopPropagation();
   }
 }

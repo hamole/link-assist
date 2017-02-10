@@ -7,6 +7,7 @@ import {TranslateModule, TranslateLoader, TranslateStaticLoader } from "ng2-tran
 import {LangSelectPage} from "../pages/lang-select/lang-select";
 import {LangChoiceComponent} from "../components/lang-choice/lang-choice";
 import {QuestionPage} from "../pages/question/question";
+import {ChatPage} from "../pages/chat/chat";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, 'assets/i18n', '.json');
@@ -19,6 +20,7 @@ export function createTranslateLoader(http: Http) {
     QuestionCardComponent,
     LangChoiceComponent,
     QuestionPage,
+    ChatPage,
   ],
   imports: [
     HttpModule,
@@ -34,6 +36,7 @@ export function createTranslateLoader(http: Http) {
     MyApp,
     LangSelectPage,
     QuestionPage,
+    ChatPage,
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},

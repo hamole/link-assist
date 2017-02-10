@@ -1,0 +1,173 @@
+<!--
+  Generated template for the Chat page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Conversational Health Assessment Tool (CHAT)</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form>
+          <fieldset class="form-group">
+            <legend><h2>Supportive professional relationships</h2></legend>
+            <p>These questions determine if the client has a well-functioning, supportive relationship with a healthcare
+              provider (doctor, physiotherapist, etc).</p>
+            <ion-item text-wrap>
+              <ion-label color="primary" floating>Who do you usually see to help you look after your health?</ion-label>
+              <ion-textarea></ion-textarea>
+            </ion-item>
+            <ion-item text-wrap>
+              <ion-label color="primary" floating>How difficult is it for you to speak with [that provider] about your
+                health?
+              </ion-label>
+              <ion-textarea></ion-textarea>
+            </ion-item>
+          </fieldset>
+          <fieldset>
+            <legend><h2>Supportive personal relationships</h2></legend>
+            <p>These questions determine whether a client’s friends, family, or neighbours provide support in the form
+              of
+              emotional or practical assistance.</p>
+            <ion-item text-wrap>
+              <ion-label color="primary" floating>Aside from healthcare providers, who else do you talk with about your
+                health?
+              </ion-label>
+              <ion-textarea></ion-textarea>
+            </ion-item>
+            <ion-item text-wrap>
+              <ion-label color="primary" floating>How comfortable are you to ask [that person] for help if you need it?
+              </ion-label>
+              <ion-textarea></ion-textarea>
+            </ion-item>
+          </fieldset>
+          <fieldset>
+            <legend><h2>Health information access and comprehension</h2></legend>
+            <p>These questions identify if a client actively seeks information about their health; can identify and use
+              credible
+              information sources;
+              is able to manage not become overwhelmed by complex information; and knows how to use that information
+              effectively.</p>
+            <ion-item text-wrap>
+              <ion-label color="primary" floating>Where else do you get health information that you trust?</ion-label>
+              <ion-textarea></ion-textarea>
+            </ion-item>
+            <ion-item text-wrap>
+              <ion-label color="primary" floating>How difficult is it for you to understand information about your
+                health?
+              </ion-label>
+              <ion-textarea></ion-textarea>
+            </ion-item>
+          </fieldset>
+          <fieldset>
+            <legend><h2>Current health behaviours</h2></legend>
+            <p>These questions seek a broad overview of a client’s health behaviours and how the client prioritises
+              active
+              management of their health.</p>
+            <ion-item text-wrap>
+              <ion-label color="primary" floating>What do you do to look after your health on a daily basis? Prompt for
+                diet,
+                sleeping habits, medication, and treatment plan
+              </ion-label>
+              <ion-textarea></ion-textarea>
+            </ion-item>
+          </fieldset>
+          <fieldset>
+            <legend><h2>Health promotion barriers and support</h2></legend>
+            <p>These questions identify the challenges and supports clients may experience when trying to engage in or
+              maintain
+              health behaviours and actions.</p>
+            <ion-item text-wrap>
+              <ion-label color="primary" floating>Thinking about the things you do to look after your health, what is
+                difficult
+                for you to keep doing on a regular basis?
+              </ion-label>
+              <ion-textarea></ion-textarea>
+            </ion-item>
+            <ion-item text-wrap>
+              <ion-label color="primary" floating>Thinking about the things you do to look after your health, what is
+                going
+                well
+                for you?
+              </ion-label>
+              <ion-textarea></ion-textarea>
+            </ion-item>
+          </fieldset>
+          <fieldset>
+            <legend><h2>Assessment</h2></legend>
+            <ion-grid>
+              <ion-row>
+                <ion-col width-60>
+                  <ion-row>
+                    <ion-col width-80>
+                      <h3>Section</h3>
+                    </ion-col>
+                    <ion-col width-20>
+                      <h3>Follow Up</h3>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col width-80>
+                      Supportive professional relationships
+                    </ion-col>
+                    <ion-col width-20>
+                      <ion-checkbox></ion-checkbox>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col width-80>
+                      Supportive personal relationships
+                    </ion-col>
+                    <ion-col width-20>
+                      <ion-checkbox></ion-checkbox>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col width-80>
+                      Health information access and comprehension
+                    </ion-col>
+                    <ion-col width-20>
+                      <ion-checkbox></ion-checkbox>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col width-80>
+                      Current health behaviours
+                    </ion-col>
+                    <ion-col width-20>
+                      <ion-checkbox></ion-checkbox>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col width-80>
+                      Health promotion barriers and support
+                    </ion-col>
+                    <ion-col>
+                      <ion-checkbox></ion-checkbox>
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            <ion-item>
+              <ion-label color="primary" floating>Comments</ion-label>
+              <ion-textarea></ion-textarea>
+            </ion-item>
+          </fieldset>
+          <button ion-button type="submit" color="secondary" large>
+            Save
+          </button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

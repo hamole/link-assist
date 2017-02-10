@@ -3,6 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { LangSelectPage } from "../pages/lang-select/lang-select";
 import { QuestionPage } from '../pages/question/question';
+import { ChatPage } from '../pages/chat/chat';
 import { TranslateService } from 'ng2-translate';
 import { Question } from '../models/question';
 import {QuestionService} from "../services/question.service";
@@ -33,6 +34,7 @@ export class MyApp implements OnInit{
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Language Selection', component: LangSelectPage },
+      { title: 'Conversational Health Assessment Tool (CHAT)', component: ChatPage}
     ];
 
   }

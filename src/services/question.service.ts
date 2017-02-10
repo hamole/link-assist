@@ -9,6 +9,10 @@ import { QuestionOption } from '../models/questionoption';
 const YES =  new QuestionOption(0,'YES','secondary','answer-button','checkmark');
 const NO =  new QuestionOption(1,'NO','danger','answer-button','close');
 
+const GP = new QuestionOption(0,'GP','','answer-button','');
+
+
+
 const QUESTIONS= [
   new Question('GLASSES', 'Do you usually wear glasses?',[YES,NO]),
   new Question('HEARING', 'Do you usually wear a hearing aid?',[YES,NO])

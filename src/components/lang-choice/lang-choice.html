@@ -2,5 +2,8 @@
   <img class="lang-flag" src="{{ langOption.iconPath}}">
   <ion-card-content>
     <p class="lang-name">{{langOption.name}}</p>
+    <button ion-button class="audio-button" (click)="playAudio($event)">
+      <ion-icon name="volume-up"></ion-icon>
+    </button>
   </ion-card-content>
 </ion-card>
