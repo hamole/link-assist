@@ -8,6 +8,7 @@ import {LangSelectPage} from "../pages/lang-select/lang-select";
 import {LangChoiceComponent} from "../components/lang-choice/lang-choice";
 import {QuestionPage} from "../pages/question/question";
 import {ChatPage} from "../pages/chat/chat";
+import {AccordionListComponent} from "../components/accordion-list/accordion-list";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, 'assets/i18n', '.json');
@@ -19,6 +20,7 @@ export function createTranslateLoader(http: Http) {
     LangSelectPage,
     QuestionCardComponent,
     LangChoiceComponent,
+    AccordionListComponent,
     QuestionPage,
     ChatPage,
   ],

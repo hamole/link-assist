@@ -1,0 +1,9 @@
+<ion-list-header icon-right (click)="toggle()">
+  {{ name }}
+  <ion-icon name='{{ icon }}' item-right></ion-icon>
+</ion-list-header>
+<ng-container *ngIf="expanded">
+  <button menuClose ion-item *ngFor="let item of items" (click)="menuItemClicked(item)">
+    {{ item }}
+  </button>
+</ng-container>

@@ -1,7 +1,14 @@
 <ion-grid>
   <ion-row>
     <ion-col>
-      <img class="question-image" src="{{ question.imageSrc }}" height="200">
+      <img *ngIf="hasImage" class="question-image" src="{{ question.imageSrc }}" height="200">
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <p class="question-text">
+        {{ question.key | translate }}
+      </p>
     </ion-col>
   </ion-row>
   <ion-row>
@@ -10,13 +17,6 @@
         <ion-icon name="volume-up"></ion-icon>
         {{ 'LISTENAUDIO' | translate }}
       </button>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <p class="question-text">
-        {{ question.key | translate }}
-      </p>
     </ion-col>
   </ion-row>
   <ion-row>

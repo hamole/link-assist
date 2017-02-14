@@ -15,11 +15,9 @@ import {AudioService} from "../../services/audio.service";
 })
 export class LangChoiceComponent {
 
-  @Input()
-  langOption: LangOption;
+  @Input() langOption: LangOption;
 
-  @Output()
-  clicked: EventEmitter<LangOption> = new EventEmitter<LangOption>();
+  @Output() clicked: EventEmitter<LangOption> = new EventEmitter<LangOption>();
 
   constructor(private audioService: AudioService) {
     console.log('Hello LangChoice Component');

@@ -7,12 +7,32 @@
 
   <ion-content>
     <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-      <button menuClose ion-item *ngFor="let q of questions" (click)="openQuestionPage(q)">
-        {{ q.englishName }}
-      </button>
+      <ion-searchbar (ionInput)="getSearchItems($event)"></ion-searchbar>
+      <ion-item-group *ngIf="searchActive">
+        <ion-item-divider>Results</ion-item-divider>
+        <ion-item *ngIf="searchItems?.length == 0">No results</ion-item>
+        <button menuClose ion-item *ngFor="let si of searchItems" (click)="openQuestionPage(si)">
+          {{ si.englishName }}
+        </button>
+      </ion-item-group>
+      <ng-container *ngIf="!searchActive">
+        <ion-item-group >
+          <accordion-list [name]="'Pages'"
+                          [items]="pageStrings()"
+                          (itemClicked)="openPageByString($event)">
+
+          </accordion-list>
+        </ion-item-group>
+        <ion-item-group>
+          <ion-item-divider>Questions</ion-item-divider>
+            <accordion-list *ngFor="let c of categories"
+                            [name]="c.name"
+                            [items]="questionService.getQuestionStringsForCategory(c)"
+                            (itemClicked)="openMenuItem($event)"
+            >
+            </accordion-list>
+        </ion-item-group>
+      </ng-container>
     </ion-list>
   </ion-content>
 

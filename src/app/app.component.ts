@@ -7,6 +7,7 @@ import { ChatPage } from '../pages/chat/chat';
 import { TranslateService } from 'ng2-translate';
 import { Question } from '../models/question';
 import {QuestionService} from "../services/question.service";
+import {QuestionCategory} from "../models/questioncategory";
 
 
 @Component({
@@ -18,7 +19,10 @@ export class MyApp implements OnInit{
 
   rootPage = LangSelectPage;
   pages: Array<{title: string, component: any}>;
+  categories: QuestionCategory[];
   questions: Question[];
+  searchActive: Boolean;
+  searchItems: Question[];
 
   constructor(platform: Platform, translate: TranslateService, public questionService: QuestionService) {
     platform.ready().then(() => {
@@ -39,6 +43,8 @@ export class MyApp implements OnInit{
 
   }
   ngOnInit(){
+    this.searchActive = false;
+    this.categories = this.questionService.getCategories();
     this.questions = this.questionService.getAllQuestions();
     this.questionService.setCurrentQuestion(this.questions[0]);
   }
@@ -52,6 +58,36 @@ export class MyApp implements OnInit{
     this.questionService.setCurrentQuestion(question);
     console.log(this.questionService.getCurrentQuestion());
     this.nav.setRoot(QuestionPage);
+  }
+  getSearchItems(ev: any) {
+    // set val to the value of the searchbar
+    let val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.searchActive = true;
+      this.searchItems = this.questionService.getAllQuestions().filter((question) => {
+        return (question.englishName.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    } else {
+      this.searchActive = false;
+    }
+  }
+
+  openMenuItem(item: string){
+    let selected = this.questionService.getAllQuestions().find((question) => {
+      return question.englishName == item;
+    })
+    this.openQuestionPage(selected);
+  }
+
+  pageStrings(){
+    return this.pages.map(page => page.title);
+  }
+
+  openPageByString(title: string){
+    let page = this.pages.find(p => p.title == title);
+    this.openPage(page);
   }
 
 }
