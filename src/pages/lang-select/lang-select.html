@@ -16,7 +16,7 @@
 
 <ion-content padding>
   <ion-grid>
-    <ion-row wrap>
+    <ion-row wrap responsive-lg>
       <ion-col width-25  *ngFor="let lang of languages">
         <lang-choice [langOption]="lang" (clicked)="langSelected($event)"></lang-choice>
       </ion-col>

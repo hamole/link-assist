@@ -11,7 +11,7 @@
       </p>
     </ion-col>
   </ion-row>
-  <ion-row>
+  <ion-row responsive-lg>
     <ion-col width-80 offset-10>
       <button ion-button icon-left class="audio-button" (click)="playAudio()">
         <ion-icon name="volume-up"></ion-icon>
@@ -19,7 +19,7 @@
       </button>
     </ion-col>
   </ion-row>
-  <ion-row>
+  <ion-row wrap>
     <ion-col width-50 *ngFor="let option of question.options">
       <button ion-button color="{{ option.color }}" class="answer-button" icon-left (click)="choiceMade(option.transKey)">
         <ion-icon name="{{ option.icon }}"></ion-icon>

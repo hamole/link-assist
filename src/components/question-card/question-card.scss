@@ -1,4 +1,7 @@
 question-card {
+  ion-row {
+    max-width: 100%;
+  }
   .button {
     padding: 1em;
   }
@@ -16,6 +19,7 @@ question-card {
     font-size: 250%;
     margin: 0 auto;
     display: block;
+    max-width: 100%;
   }
   .answer-button {
     font-size: 250%;
