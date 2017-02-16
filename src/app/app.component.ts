@@ -8,23 +8,28 @@ import { TranslateService } from 'ng2-translate';
 import { Question } from '../models/question';
 import {QuestionService} from "../services/question.service";
 import {QuestionCategory} from "../models/questioncategory";
+import {PatientSelectPage} from "../pages/patient-select/patient-select";
+import { PatientService } from "../services/patient.service";
 
 
 @Component({
   templateUrl: 'app.html',
-  providers: [QuestionService]
 })
 export class MyApp implements OnInit{
   @ViewChild(Nav) nav: Nav;
 
-  rootPage = LangSelectPage;
+  rootPage = PatientSelectPage;
+  pselect = {title: 'Patient Select', component: PatientSelectPage};
   pages: Array<{title: string, component: any}>;
   categories: QuestionCategory[];
   questions: Question[];
   searchActive: Boolean;
   searchItems: Question[];
 
-  constructor(platform: Platform, translate: TranslateService, public questionService: QuestionService) {
+  constructor(platform: Platform,
+              translate: TranslateService,
+              public questionService: QuestionService,
+              public patientService: PatientService) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

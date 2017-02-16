@@ -7,6 +7,7 @@
 
   <ion-content>
     <ion-list>
+      <button ion-button class="menuButton" *ngIf="this.patientService.noPatient" (click)="openPage(pselect)" menuClose>Select Patient</button>
       <ion-searchbar (ionInput)="getSearchItems($event)"></ion-searchbar>
       <ion-item-group *ngIf="searchActive">
         <ion-item-divider>Results</ion-item-divider>

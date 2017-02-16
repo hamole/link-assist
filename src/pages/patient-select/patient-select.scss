@@ -1,0 +1,17 @@
+page-patient-select {
+  #searchHeader {
+    display: flex;
+    height: 6rem;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px;
+    h2 {
+      margin: 0;
+    }
+    button {
+      margin-left: auto;
+      margin-right: 0;
+    }
+  }
+
+}

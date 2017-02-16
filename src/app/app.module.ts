@@ -9,6 +9,11 @@ import {LangChoiceComponent} from "../components/lang-choice/lang-choice";
 import {QuestionPage} from "../pages/question/question";
 import {ChatPage} from "../pages/chat/chat";
 import {AccordionListComponent} from "../components/accordion-list/accordion-list";
+import {QuestionService} from "../services/question.service";
+import { Storage } from '@ionic/storage';
+import {PatientService} from "../services/patient.service";
+import {PatientSelectPage} from "../pages/patient-select/patient-select";
+import {PatientPage} from "../pages/patient/patient";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, 'assets/i18n', '.json');
@@ -18,6 +23,8 @@ export function createTranslateLoader(http: Http) {
   declarations: [
     MyApp,
     LangSelectPage,
+    PatientSelectPage,
+    PatientPage,
     QuestionCardComponent,
     LangChoiceComponent,
     AccordionListComponent,
@@ -37,11 +44,16 @@ export function createTranslateLoader(http: Http) {
   entryComponents: [
     MyApp,
     LangSelectPage,
+    PatientSelectPage,
     QuestionPage,
+    PatientPage,
     ChatPage,
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    QuestionService,
+    PatientService,
+    Storage,
   ]
 })
 export class AppModule {}
