@@ -4,6 +4,7 @@ import {PatientService} from "../../services/patient.service";
 import { AlertController } from 'ionic-angular';
 import {LangSelectPage} from "../lang-select/lang-select";
 import {PatientPage} from "../patient/patient";
+import {Patient} from "../../models/patient";
 
 /*
   Generated class for the PatientSelect page.
@@ -19,7 +20,7 @@ export class PatientSelectPage implements OnInit{
   @ViewChild(Nav) nav: Nav;
 
   searchActive: boolean;
-  searchList: string[];
+  searchList: Patient[];
   inputVal: string;
   addError: string;
 
@@ -47,9 +48,9 @@ export class PatientSelectPage implements OnInit{
     }
   }
 
-  updateSearchList(input: string): string[]{
+  updateSearchList(input: string): Patient[]{
     return this.patientService.getPatientList().filter((patient) => {
-      return (patient.toLowerCase().indexOf(input.toLowerCase()) > -1);
+      return (patient.urNumber.toLowerCase().indexOf(input.toLowerCase()) > -1);
     });
   }
 
