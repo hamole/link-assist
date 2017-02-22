@@ -27,9 +27,9 @@
           <ion-list-header>
             Patients
           </ion-list-header>
-          <ion-item *ngFor="let item of searchList" (click)="selectPatient(item)">
-            {{ item }}
-            <button ion-button item-right color="danger" (click)="removePatient($event,item)">Remove</button>
+          <ion-item *ngFor="let item of searchList" (click)="selectPatient(item.urNumber)">
+            {{ item.urNumber }}
+            <button ion-button item-right color="danger" (click)="removePatient($event,item.urNumber)">Remove</button>
           </ion-item>
           <ion-item *ngIf="searchList.length == 0">
             No Results
