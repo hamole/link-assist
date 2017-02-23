@@ -7,32 +7,48 @@
 
   <ion-content>
     <ion-list>
-      <button ion-button class="menuButton" *ngIf="this.patientService.noPatient" (click)="openPage(pselect)" menuClose>Select Patient</button>
-      <ion-searchbar (ionInput)="getSearchItems($event)"></ion-searchbar>
+      <ion-item-group>
+        <button menuClose ion-item (click)="openPage(pages[0])">
+          Language Selection
+        </button>
+      </ion-item-group>
+      <ion-segment [(ngModel)]="segment" (ionChange)="segmentChanged()">
+        <ion-segment-button value="cuecards">
+          Cue Cards
+        </ion-segment-button>
+        <ion-segment-button value="questions">
+          Questions
+        </ion-segment-button>
+        <ion-segment-button value="procedures">
+          Procedures
+        </ion-segment-button>
+      </ion-segment>
+      <ion-searchbar #search (ionInput)="getSearchItems(search.value)"></ion-searchbar>
       <ion-item-group *ngIf="searchActive">
         <ion-item-divider>Results</ion-item-divider>
         <ion-item *ngIf="searchItems?.length == 0">No results</ion-item>
-        <button menuClose ion-item *ngFor="let si of searchItems" (click)="openQuestionPage(si)">
+        <button menuClose ion-item *ngFor="let si of searchItems" (click)="openComponentPage(si)">
           {{ si.englishName }}
         </button>
       </ion-item-group>
       <ng-container *ngIf="!searchActive">
-        <ion-item-group >
-          <accordion-list [name]="'Pages'"
-                          [items]="pageStrings()"
-                          (itemClicked)="openPageByString($event)">
-
-          </accordion-list>
-        </ion-item-group>
-        <ion-item-group>
-          <ion-item-divider>Questions</ion-item-divider>
-            <accordion-list *ngFor="let c of categories"
+        <ng-container [ngSwitch]="segment">
+          <ion-item-group  *ngSwitchCase="'cuecards'">
+            <ion-item-divider>Cue Cards</ion-item-divider>
+              <button menuClose ion-item *ngFor="let c of cueCardCategories" (click)="openCueCardCategory(c)">
+                {{ c.name }}
+              </button>
+          </ion-item-group>
+          <ion-item-group  *ngSwitchCase="'questions'">
+            <ion-item-divider>Questions</ion-item-divider>
+            <accordion-list *ngFor="let c of questionCategories"
                             [name]="c.name"
                             [items]="questionService.getQuestionStringsForCategory(c)"
                             (itemClicked)="openMenuItem($event)"
             >
             </accordion-list>
-        </ion-item-group>
+          </ion-item-group>
+        </ng-container>
       </ng-container>
     </ion-list>
   </ion-content>

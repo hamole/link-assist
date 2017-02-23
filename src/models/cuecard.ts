@@ -1,6 +1,3 @@
-/**
- * Created by Hamish on 22/02/2017.
- */
 import { CueCardCategory } from './cuecardcategory';
 
 export class CueCard {
@@ -12,8 +9,7 @@ export class CueCard {
     this.key = key;
     this.englishName = englishName;
     this.category = category;
-    this.imageSrc = `assets/images/cuecards/${this.key}.jpg`;
+    this.imageSrc = `assets/images/cuecards/${this.key.toLowerCase()}.PNG`;
   }
 }
-
 

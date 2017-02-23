@@ -4,7 +4,7 @@
 import { CueCard } from '../models/cuecard';
 import {CueCardCategory} from "../models/cuecardcategory";
 
-const MEDICAL = new CueCardCategory('People');
+const MEDICAL = new CueCardCategory('Medical');
 const FAMILY = new CueCardCategory('Family');
 const BASICS = new CueCardCategory('Basics');
 const PEOPLE = new CueCardCategory('People');

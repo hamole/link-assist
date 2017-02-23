@@ -24,7 +24,7 @@ export class PatientSelectPage implements OnInit{
   inputVal: string;
   addError: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public patientService: PatientService,
+  constructor(public navCtrl: NavController, public navParams: NavParams, public patientService: PatientService,
               public alertCtrl: AlertController) {
 
   }
@@ -50,7 +50,7 @@ export class PatientSelectPage implements OnInit{
 
   updateSearchList(input: string): Patient[]{
     return this.patientService.getPatientList().filter((patient) => {
-      return (patient.urNumber.toLowerCase().indexOf(input.toLowerCase()) > -1);
+      return (patient.urNumber && patient.urNumber.toLowerCase().indexOf(input.toLowerCase()) > -1);
     });
   }
 

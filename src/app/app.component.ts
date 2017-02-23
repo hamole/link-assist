@@ -10,6 +10,10 @@ import {QuestionService} from "../services/question.service";
 import {QuestionCategory} from "../models/questioncategory";
 import {PatientSelectPage} from "../pages/patient-select/patient-select";
 import { PatientService } from "../services/patient.service";
+import {CueCardCategory} from "../models/cuecardcategory";
+import {CueCard} from "../models/cuecard";
+import {CueCardService} from "../services/cuecard.service";
+import {CuecardPage} from "../pages/cuecard/cuecard";
 
 
 @Component({
@@ -18,18 +22,25 @@ import { PatientService } from "../services/patient.service";
 export class MyApp implements OnInit{
   @ViewChild(Nav) nav: Nav;
 
-  rootPage = PatientSelectPage;
+  rootPage = LangSelectPage;
+  langSelect: {title: 'Language Selection', component: LangSelectPage};
   pselect = {title: 'Patient Select', component: PatientSelectPage};
   pages: Array<{title: string, component: any}>;
-  categories: QuestionCategory[];
+  questionCategories: QuestionCategory[];
   questions: Question[];
+  cueCardCategories: CueCardCategory[];
+  cuecards: CueCard[];
   searchActive: Boolean;
-  searchItems: Question[];
+  //searchItems: Question[];
+  searchItems: any[];
+  segment: string;
+  inputVal: string;
 
   constructor(platform: Platform,
               translate: TranslateService,
               public questionService: QuestionService,
-              public patientService: PatientService) {
+              public patientService: PatientService,
+              public cueCardService: CueCardService) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -49,9 +60,13 @@ export class MyApp implements OnInit{
   }
   ngOnInit(){
     this.searchActive = false;
-    this.categories = this.questionService.getCategories();
+    this.segment = 'cuecards';
+    this.questionCategories = this.questionService.getCategories();
     this.questions = this.questionService.getAllQuestions();
     this.questionService.setCurrentQuestion(this.questions[0]);
+    this.cueCardCategories = this.cueCardService.getCategories();
+    this.cuecards = this.cueCardService.getAllCueCards();
+    this.cueCardService.setCurrentCueCard(this.cuecards[0]);
   }
   openPage(page) {
     // Reset the content nav to have just this page
@@ -64,26 +79,54 @@ export class MyApp implements OnInit{
     console.log(this.questionService.getCurrentQuestion());
     this.nav.setRoot(QuestionPage);
   }
-  getSearchItems(ev: any) {
-    // set val to the value of the searchbar
-    let val = ev.target.value;
+  openCueCardPage(cuecard: CueCard){
+    console.log(cuecard);
+    this.cueCardService.setCurrentCueCard(cuecard);
+    console.log(this.cueCardService.getCurrentCueCard());
+    this.nav.setRoot(CuecardPage);
+  }
 
+  openComponentPage(component: any){
+    if(this.segment == 'cuecards'){
+      this.openCueCardPage(component);
+    } else if(this.segment == 'questions') {
+      this.openQuestionPage(component);
+    }
+  }
+  getSearchItems(val: string) {
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
+      this.inputVal = val;
       this.searchActive = true;
-      this.searchItems = this.questionService.getAllQuestions().filter((question) => {
-        return (question.englishName.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
+      if(this.segment == 'cuecards'){
+        this.searchItems = this.cueCardService.getAllCueCards().filter((cuecard) => {
+          return (cuecard.englishName.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        })
+      } else if(this.segment == 'questions'){
+        this.searchItems = this.questionService.getAllQuestions().filter((question) => {
+         return (question.englishName.toLowerCase().indexOf(val.toLowerCase()) > -1);
+         })
+      }
     } else {
       this.searchActive = false;
     }
   }
-
+  segmentChanged(){
+    this.getSearchItems(this.inputVal);
+  }
   openMenuItem(item: string){
-    let selected = this.questionService.getAllQuestions().find((question) => {
-      return question.englishName == item;
-    })
-    this.openQuestionPage(selected);
+    if(this.segment == 'cuecards'){
+      let selected = this.cueCardService.getAllCueCards().find((cuecard) => {
+        return cuecard.englishName == item;
+      })
+      this.openCueCardPage(selected);
+    } else if(this.segment == 'questions'){
+      let selected = this.questionService.getAllQuestions().find((question) => {
+        return question.englishName == item;
+      })
+      this.openQuestionPage(selected);
+    }
+
   }
 
   pageStrings(){
@@ -95,4 +138,7 @@ export class MyApp implements OnInit{
     this.openPage(page);
   }
 
+  openCueCardCategory(category: CueCardCategory){
+    this.nav.setRoot(CuecardPage,{category: category});
+  }
 }

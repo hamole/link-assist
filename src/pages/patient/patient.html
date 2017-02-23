@@ -18,11 +18,17 @@
   <ion-row responsive-lg>
     <ion-col width-50 offset-25>
       <div class="actionButtons">
-        <button ion-button color="secondary">
+        <ng-container *ngIf="patientService.getCurrentPatient().hasBasicAssesment">
+          <h3>Preferred Language: {{ patientService.getCurrentPatient().preferredLanguage }}</h3>
+          <h3>Vision Difficulties: {{ patientService.getBasicAssessment().answers[0] | translate }}</h3>
+          <h3>Hearing Difficulties: {{ patientService.getBasicAssessment().answers[1] | translate }}</h3>
+        </ng-container>
+        <button ion-button color="secondary" (click)="startBasicAssessment()">
           Assess Communication Basics
         </button>
         <button ion-button>New Assessment</button>
         <button ion-button>General Use</button>
+        <button ion-button (click)="changePatient()">Change Patient</button>
       </div>
     </ion-col>
   </ion-row>

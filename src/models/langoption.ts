@@ -1,6 +1,7 @@
 export class LangOption {
   iso: string;
   name: string;
+  englishName: string;
   iconPath: string;
   constructor(iso: string, name: string, iconPath: string) {
     this.iso = iso;

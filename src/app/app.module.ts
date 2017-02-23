@@ -14,6 +14,10 @@ import { Storage } from '@ionic/storage';
 import {PatientService} from "../services/patient.service";
 import {PatientSelectPage} from "../pages/patient-select/patient-select";
 import {PatientPage} from "../pages/patient/patient";
+import {AssessmentPage} from "../pages/assessment/assessment";
+import {CuecardPage} from "../pages/cuecard/cuecard";
+import {CueCardService} from "../services/cuecard.service";
+import {CueCardComponent} from "../components/cuecard/cuecard";
 
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, 'assets/i18n', '.json');
@@ -25,7 +29,10 @@ export function createTranslateLoader(http: Http) {
     LangSelectPage,
     PatientSelectPage,
     PatientPage,
+    AssessmentPage,
     QuestionCardComponent,
+    CueCardComponent,
+    CuecardPage,
     LangChoiceComponent,
     AccordionListComponent,
     QuestionPage,
@@ -45,6 +52,8 @@ export function createTranslateLoader(http: Http) {
     MyApp,
     LangSelectPage,
     PatientSelectPage,
+    AssessmentPage,
+    CuecardPage,
     QuestionPage,
     PatientPage,
     ChatPage,
@@ -53,6 +62,7 @@ export function createTranslateLoader(http: Http) {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     QuestionService,
     PatientService,
+    CueCardService,
     Storage,
   ]
 })

@@ -7,7 +7,8 @@ import {Patient} from "./patient";
 export class StructuredAssessment {
   title: string;
   patient: Patient;
-  questions : Question[];
+  questions: Question[];
+  answers: string[] = [];
   constructor(title: string, patient: Patient, questions: Question[]) {
     this.title = title;
     this.patient = patient;

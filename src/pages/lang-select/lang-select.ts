@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { LangOption } from "../../models/langoption";
 import { TranslateService } from 'ng2-translate';
 import { MenuController } from 'ionic-angular';
+import {PatientPage} from "../patient/patient";
 /*
   Generated class for the LangSelect page.
 
@@ -10,8 +11,8 @@ import { MenuController } from 'ionic-angular';
   Ionic pages and navigation.
 */
 const LANGS: LangOption [] = [
-  {iso: 'en', name: 'English', iconPath: 'https://flags.fmcdn.net/data/flags/normal/au.png'},
-  {iso: 'el', name: 'Ελληνικά', iconPath: 'https://flags.fmcdn.net/data/flags/normal/gr.png'},
+  {iso: 'en', name: 'English', englishName: 'English', iconPath: 'https://flags.fmcdn.net/data/flags/normal/au.png'},
+  {iso: 'el', name: 'Ελληνικά', englishName: 'Greek', iconPath: 'https://flags.fmcdn.net/data/flags/normal/gr.png'},
 ];
 
 @Component({
@@ -30,8 +31,15 @@ export class LangSelectPage {
   }
 
   langSelected(lang: LangOption){
-    console.log('Selected: ' + lang.name);
-    this.translate.use(lang.iso);
-    this.menuCtrl.open();
+    if(this.navParams.get('patient')){
+      let patient = this.navParams.get('patient');
+      patient.preferredLanguage = lang.englishName;
+      this.translate.use(lang.iso);
+      this.navCtrl.push(PatientPage, {selectedLang: lang.iso});
+    } else{
+      console.log('Selected: ' + lang.name);
+      this.translate.use(lang.iso);
+      this.menuCtrl.open();
+    }
   }
 }
